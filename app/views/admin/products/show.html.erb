@@ -1,0 +1,11 @@
+<h1><%= @product.title %></h1>
+<p><%= @product.description %></p>
+<p>
+    Price: <b><%= @product.price %></b>
+</p>
+<p>
+    <b>Category: </b> <%= @product.category.name %>
+</p>
+<div>
+    <%= link_to 'Back to list', admin_products_path %>
+</div>

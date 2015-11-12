@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shop</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag "carts" %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<%= render 'layouts/application/navbar' %>
+
+<div class="container">
+
+  <% flash.each do |type, message| %>
+    <%= content_tag :div, message, class: "alert alert-#{type}" %>
+  <% end %>
+
+  <%= yield %>
+
+</div>
+</body>
+</html>
