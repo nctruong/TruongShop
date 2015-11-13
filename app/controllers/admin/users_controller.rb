@@ -13,7 +13,7 @@ class Admin::UsersController < AdminController
     
     respond_to do |format|
       if @user.save
-        # Tell the UserMailer to send a welcome email after save
+      
         UserMailer.welcome_email(@user).deliver_now
 
         format.html { redirect_to [:admin, @user, notice: 'User was successfully created.' ]}

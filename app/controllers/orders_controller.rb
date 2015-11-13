@@ -7,16 +7,15 @@ class OrdersController < ApplicationController
   require 'rubygems'
   require 'mail'
    
-  # Send email with attachment.
+
   def sendEmail
-    # Set up delivery defaults to use Gmail
     Mail.defaults do
       delivery_method :smtp, {
         :address              => 'smtp.gmail.com',
         :port                 => '587',
         :domain               => 'gmail.com',
         :user_name            => 'tnguyen3951@gmail.com',
-        :password             => 'Oracle11@',
+        :password             => '',
         :authentication       => :plain,
         :enable_starttls_auto => true
       }
@@ -111,14 +110,14 @@ class OrdersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+    
     def set_order
       @order = Order.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    
     def order_params
       params.require(:order).permit(:name, :address, :email, :pay_type)
     end
-  #...
+
 end
