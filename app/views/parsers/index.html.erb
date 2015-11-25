@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Parsers</h1>
+
+
+<br>
+
+<%= link_to 'New Parser', new_parser_path %>
+
+<% @parsers.each do |parser| %>
+<%= raw(parser) %>
+
+<% end %>

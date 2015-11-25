@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :parsers
   get 'categories/show'
 
   get 'products/show' => 'products#show'

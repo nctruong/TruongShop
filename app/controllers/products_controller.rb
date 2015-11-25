@@ -16,7 +16,6 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     respond_to do |format|
         format.html { redirect_to root_url }
-        format.js   {  }
         format.json { render action: 'show',
           status: :created, location: @product }
     end
@@ -28,7 +27,6 @@ class ProductsController < ApplicationController
     
     respond_to do |format|
       format.html { redirect_to root_url }
-      format.js {}
       format.json { head :no_content }
     end
   end
