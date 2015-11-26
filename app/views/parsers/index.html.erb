@@ -7,7 +7,11 @@
 
 <%= link_to 'New Parser', new_parser_path %>
 
-<% @parsers.each do |parser| %>
-<%= raw(parser) %>
-
-<% end %>
+<% 
+#if @parsers != nil
+#    @parsers.each do |parser| 
+#        raw(parser)
+#    end
+#else
+    raw(@parser)
+#end %>

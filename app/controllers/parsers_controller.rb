@@ -8,13 +8,23 @@ class ParsersController < ApplicationController
   # GET /parsers
   # GET /parsers.json
   def index
-    pageUrl = 'http://www.lazada.vn/dong-ho/'
+    #pageUrl = 'http://www.lazada.vn/dong-ho/'
+    pageUrl = 'http://ione.vnexpress.net/photo'
+    #pageUrl = 'http://www.xemanh.net/category/anh-girl-xinh/anh-sexy'
+    @arr = true
 		uri = URI(pageUrl)
+		puts '============================================uri.host: ' + uri.host
 		case uri.host
 		when "www.lazada.vn"
 			#@parsers = Array.new
 			@parsers = lazada_dongho(pageUrl)
 			#puts "@parsers"
+		when "ione.vnexpress.net"
+		  puts "===========================================ione"
+		  @arr = false
+		  @parser = ione_photo(pageUrl)
+		when "www.xemanh.net"
+		  @parser = xemanh_sexy(pageUrl)
 		else
 			@content = unknow(pageUrl)
 		end
@@ -103,7 +113,30 @@ class ParsersController < ApplicationController
 			body.xpath('//@style').remove
 			#body.xpath('//@class').remove
 			body.xpath('//@id').remove
-			return body
+			body
+		end
+		
+		def ione_photo(pageUrl)
+		  puts '======================================call ione_photo'
+		  doc = Nokogiri::HTML(open(pageUrl))
+      body = doc.css('div#showphotoajax')
+
+			body.xpath('//@style').remove
+			#body.xpath('//@class').remove
+			#body.xpath('//@id').remove
+			body.inner_html
+			body
+		end
+		
+		def xemanh_sexy(pageUrl)
+		  doc = Nokogiri::HTML(open(pageUrl))
+      body = doc.css('div#posts-container')
+
+			body.xpath('//@style').remove
+			#body.xpath('//@class').remove
+			#body.xpath('//@id').remove
+			body.inner_html
+			body
 		end
 		
 		def unknow(pageUrl)
