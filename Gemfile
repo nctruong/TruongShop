@@ -1,8 +1,9 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.2.3'
-
-gem 'mysql2', '~> 0.3.0'
+gem 'sqlite3'
+gem 'mongoid', '~> 5.0.0.beta', github: 'mongoid/mongoid'
+gem 'bson_ext'
 
 gem 'uglifier', '>= 1.3.0'
 
